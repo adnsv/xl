@@ -18,7 +18,9 @@ r.cells.emplace_back("B1");
 r.cells.emplace_back("C1");
 ```
 
-2. Prepare internal file structure (see `xl/writer.hpp`)
+See the content of the `xl/model.hpp` file for more options, like column widths, cell alignment, etc.
+
+1. Prepare internal file structure (see `xl/writer.hpp`)
 
 ```c++
 #include <xl/writer.cpp>
@@ -27,11 +29,11 @@ auto w = xl::writer();
 w.write(wb);
 ```
 
-3. Pack populated content into a zip file with `.xlsx` extension (`xl/pack.hpp`)
+3. Pack populated content into a zip blob/file with `.xlsx` extension (`xl/pack.hpp`)
 
 ```c++
 #include <xl/pack.cpp>
 std::vector<std::byte> blob;
 blob = xl::pack(w.files);
-// write the blob to 
+// the produced blob now can be written to a file with .xlsx extension
 ```
